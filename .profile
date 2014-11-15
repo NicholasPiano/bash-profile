@@ -370,6 +370,8 @@ py () {
 	python "$@"
 }
 
+export HISTTIMEFORMAT="%d/%m/%y %T "
+
 #star link
 alias start_starlink='export STARLINK_DIR=/Users/nicholaspiano/star; . $STARLINK_DIR/etc/profile'
 ### Added by the Heroku Toolbelt
