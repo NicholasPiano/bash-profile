@@ -227,6 +227,7 @@ alias openPorts='sudo lsof -i | grep LISTEN'        # openPorts:    All listenin
 alias showBlocked='sudo ipfw list'                  # showBlocked:  All ipfw rules inc/ blocked IPs
 alias annabelle='ssh nicholaspiano@192.168.1.16'
 alias bertha='ssh nicholaspiano@192.168.1.18'
+alias lannabelle='ssh larrypiano@192.168.1.16'
 
 #   ii:  display useful host related informaton
 #   -------------------------------------------------------------------
@@ -266,7 +267,7 @@ alias mountReadWrite='/sbin/mount -uw /'    # mountReadWrite:   For use when boo
 #   screensaverDesktop: Run a screensaver on the Desktop
 #   -----------------------------------------------------------------------------------
     alias screensaverDesktop='/System/Library/Frameworks/ScreenSaver.framework/Resources/ScreenSaverEngine.app/Contents/MacOS/ScreenSaverEngine -background'
-    
+
 #	generate random password
 #   -----------------------------------------------------------------------------------
     mkpw () { head /dev/urandom | uuencode -m - | sed -n 2p | cut -c1-${1:-8}; }
@@ -295,7 +296,7 @@ export PROJECT_HOME=$HOME/directory-you-do-development-in
 source /usr/local/bin/virtualenvwrapper.sh
 
 export DB_PWD='uqnhs77f'
-export DB_USER='nicholas' 
+export DB_USER='nicholas'
 
 #git
 
