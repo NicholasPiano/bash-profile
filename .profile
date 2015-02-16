@@ -49,7 +49,7 @@
 #   Virtualenv vars
 #   ---------------
 	export WORKON_HOME=$HOME/.virtualenvs
-  export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python
+  export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3.4
   source virtualenvwrapper.sh
 
 #   -----------------------------
