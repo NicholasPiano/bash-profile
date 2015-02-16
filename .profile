@@ -49,6 +49,8 @@
 #   Virtualenv vars
 #   ---------------
 	export WORKON_HOME=$HOME/.virtualenvs
+  export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python
+  source virtualenvwrapper.sh
 
 #   -----------------------------
 #   2.  MAKE TERMINAL BETTER
