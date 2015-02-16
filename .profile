@@ -289,7 +289,6 @@ alias newdjango='django-admin.py startproject'
 alias newapp='py manage.py startapp'
 alias django='cd /Library/Python/2.7/site-packages/django'
 dm () { py manage.py $@; }
-#alias django='cd /usr/local/lib/python3.3/site-packages/django'
 
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/directory-you-do-development-in
@@ -301,10 +300,6 @@ export DB_USER='nicholas'
 #git
 
 gc () { git commit -am $@; }
-
-#trac
-
-alias trac='sudo tracd -p 8000 --basic-auth="tracenv,/private/var/local/tracenv/.htpasswd," /private/var/local/tracenv'
 
 #   httpDebug:  Download a web page and show info on what took time
 #   -------------------------------------------------------------------
@@ -345,25 +340,6 @@ alias trac='sudo tracd -p 8000 --basic-auth="tracenv,/private/var/local/tracenv/
 #   10. PHYSICS
 #   ---------------------------------------
 
-#ssh commands
-alias ph="ssh -X s0903260@ph-cplab.ph.ed.ac.uk"
-alias braid="ssh -X npiano@braid.roe.ac.uk"
-alias blackford="ssh -X npiano@blackford.roe.ac.uk"
-
-#scp commands
-pcpu () {
-	scp $1 s0903260@ph-cplab.ph.ed.ac.uk:/Home/s0903260/$2
-}
-pcpd () {
-	scp s0903260@ph-cplab.ph.ed.ac.uk:/Home/s0903260/$1 .
-}
-pcpuf () {
-	scp -r $1 s0903260@ph-cplab.ph.ed.ac.uk:/Home/s0903260/$2
-}
-pcpdf () {
-	scp -r s0903260@ph-cplab.ph.ed.ac.uk:/Home/s0903260/$1 .
-}
-
 #   ---------------------------------------
 #   11. OTHER
 #   ---------------------------------------
@@ -372,10 +348,3 @@ pcpdf () {
 py () {
 	python "$@"
 }
-
-export HISTTIMEFORMAT="%d/%m/%y %T "
-
-#star link
-alias start_starlink='export STARLINK_DIR=/Users/nicholaspiano/star; . $STARLINK_DIR/etc/profile'
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
