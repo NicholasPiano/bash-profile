@@ -49,8 +49,6 @@
 #   Virtualenv vars
 #   ---------------
 	export WORKON_HOME=$HOME/.virtualenvs
-	export PROJECT_HOME=$HOME/Dropbox/Cewd/xdev/
-	source /usr/local/bin/virtualenvwrapper.sh
 
 #   -----------------------------
 #   2.  MAKE TERMINAL BETTER
