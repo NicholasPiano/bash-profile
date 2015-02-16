@@ -251,8 +251,6 @@ alias django='cd /Library/Python/2.7/site-packages/django'
 dm () { py manage.py $@; }
 
 export WORKON_HOME=$HOME/.virtualenvs
-export PROJECT_HOME=$HOME/directory-you-do-development-in
-source /usr/local/bin/virtualenvwrapper.sh
 
 export DB_PWD='uqnhs77f'
 export DB_USER='nicholas'
