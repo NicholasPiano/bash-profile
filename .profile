@@ -75,7 +75,7 @@ function set_bash_prompt () {
   fi
 
   # Set the bash prompt variable.
-  PS1="______________________________________________________________________________________________________\n| \t | \w @ \h \u ${PYTHON_VIRTUALENV}${YELLOW}${BRANCH}${COLOR_NONE} \n| => "
+  PS1="_______________________________________________________________________________________________________________\n| \t | \w @ \h \u ${PYTHON_VIRTUALENV}${YELLOW}${BRANCH}${COLOR_NONE} \n| => "
   PS2="| => "
 }
 
