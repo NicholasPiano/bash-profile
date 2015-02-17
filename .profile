@@ -22,17 +22,65 @@
 #   Change Prompt
 #   ------------------------------------------------------------
 
-    function parse_git_branch () {
-      git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'
-    }
+# bash_prompt
+# The various escape codes that we can use to color our prompt.
 
-    RED="\[\033[0;31m\]"
-    YELLOW="\[\033[0;33m\]"
-    GREEN="\[\033[0;32m\]"
-    NO_COLOR="\[\033[0m\]"
+RED="\[\033[0;31m\]"
+YELLOW="\[\033[1;33m\]"
+GREEN="\[\033[0;32m\]"
+BLUE="\[\033[1;34m\]"
+LIGHT_RED="\[\033[1;31m\]"
+LIGHT_GREEN="\[\033[1;32m\]"
+WHITE="\[\033[1;37m\]"
+LIGHT_GRAY="\[\033[0;37m\]"
+COLOR_NONE="\[\e[0m\]"
 
-    export PS1="________________________________________________________________________________\n| \w @ \h \u $YELLOW\$(parse_git_branch) $NO_COLOR \n| => "
-    export PS2="| => "
+# Detect whether the current directory is a git repository.
+function is_git_repository {
+  git branch > /dev/null 2>&1
+}
+
+function set_git_branch {
+  # Set the final branch string
+  BRANCH=`parse_git_branch`
+}
+
+function parse_git_branch() {
+  git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/\1$(parse_git_dirty)/"
+}
+
+function parse_git_dirty() {
+  [[ $(git status 2> /dev/null | tail -n1) != *"working directory clean"* ]]
+}
+
+# Determine active Python virtualenv details.
+function set_virtualenv () {
+  if test -z "$VIRTUAL_ENV" ; then
+    PYTHON_VIRTUALENV=""
+  else
+    PYTHON_VIRTUALENV="${BLUE}`basename \"$VIRTUAL_ENV\"`${COLOR_NONE} "
+  fi
+}
+
+# Set the full bash prompt.
+function set_bash_prompt () {
+  # Set the PYTHON_VIRTUALENV variable.
+  set_virtualenv
+
+  # Set the BRANCH variable.
+  if is_git_repository ; then
+    set_git_branch
+  else
+    BRANCH=''
+  fi
+
+  # Set the bash prompt variable.
+  PS1="______________________________________________________________________________________________________\n| \t | \w @ \h \u ${PYTHON_VIRTUALENV}${YELLOW}${BRANCH}${COLOR_NONE} \n| => "
+  PS2="| => "
+}
+
+# Tell bash to execute this function just before displaying its prompt.
+PROMPT_COMMAND=set_bash_prompt
 
 #   Set Paths
 #   ------------------------------------------------------------
