@@ -53,20 +53,8 @@ function parse_git_dirty() {
   [[ $(git status 2> /dev/null | tail -n1) != *"working directory clean"* ]]
 }
 
-# Determine active Python virtualenv details.
-function set_virtualenv () {
-  if test -z "$VIRTUAL_ENV" ; then
-    PYTHON_VIRTUALENV=""
-  else
-    PYTHON_VIRTUALENV="${BLUE}`basename \"$VIRTUAL_ENV\"`${COLOR_NONE} "
-  fi
-}
-
 # Set the full bash prompt.
 function set_bash_prompt () {
-  # Set the PYTHON_VIRTUALENV variable.
-  set_virtualenv
-
   # Set the BRANCH variable.
   if is_git_repository ; then
     set_git_branch
@@ -75,7 +63,7 @@ function set_bash_prompt () {
   fi
 
   # Set the bash prompt variable.
-  PS1="_______________________________________________________________________________________________________________\n| \t | \w @ \h \u ${PYTHON_VIRTUALENV}${YELLOW}${BRANCH}${COLOR_NONE} \n| => "
+  PS1="_______________________________________________________________________________________________________________\n| \t | \w @ \h \u ${YELLOW}${BRANCH}${COLOR_NONE} \n| => "
   PS2="| => "
 }
 
@@ -103,12 +91,6 @@ PROMPT_COMMAND=set_bash_prompt
 #   ------------------------------------------------------------
 #   export CLICOLOR=1
 #   export LSCOLORS=ExFxBxDxCxegedabagacad
-
-#   Virtualenv vars
-#   ---------------
-	export WORKON_HOME=$HOME/.virtualenvs
-  export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3.4
-  source /usr/local/bin/virtualenvwrapper.sh
 
 #   -----------------------------
 #   2.  MAKE TERMINAL BETTER
@@ -302,18 +284,6 @@ alias editHosts='sudo edit /etc/hosts'                  # editHosts:        Edit
 alias herr='tail /var/log/httpd/error_log'              # herr:             Tails HTTP error logs
 alias apacheLogs="less +F /var/log/apache2/error_log"   # Apachelogs:   Shows apache error logs
 httpHeaders () { /usr/bin/curl -I -L $@ ; }             # httpHeaders:      Grabs headers from web page
-
-#django
-
-alias newdjango='django-admin.py startproject'
-alias newapp='py manage.py startapp'
-alias django='cd /Library/Python/2.7/site-packages/django'
-dm () { py manage.py $@; }
-
-export WORKON_HOME=$HOME/.virtualenvs
-
-export DB_PWD='uqnhs77f'
-export DB_USER='nicholas'
 
 #git
 
